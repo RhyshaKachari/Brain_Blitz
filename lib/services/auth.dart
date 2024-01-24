@@ -6,9 +6,7 @@ final GoogleSignIn googleSignIn = GoogleSignIn();
 
 Future<User?> signWithGoogle() async{
   try{
-
-
-  final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
+    final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
   final GoogleSignInAuthentication googleSignInAuthentication = await googleSignInAccount!.authentication;
 
   final AuthCredential credential = GoogleAuthProvider.credential(idToken: googleSignInAuthentication.idToken, accessToken: googleSignInAuthentication.accessToken);
@@ -22,7 +20,7 @@ Future<User?> signWithGoogle() async{
   assert(currentUser!.uid == user!.uid);
   print(user);}
 catch(e){
-print("ERROR OCCURED IN SIGN IN");
+print("ERROR OCCURRED IN SIGN IN");
 print(e);
 }
 }

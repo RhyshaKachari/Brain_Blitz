@@ -41,6 +41,7 @@ dependencies:
   firebase_auth: any
   google_sign_in: any
   flutter_signin_button: any
+  hexcolor:
 
 dev_dependencies:
   flutter_test:
