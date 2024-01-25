@@ -5,16 +5,39 @@ class FireDB{
   final FirebaseAuth _auth = FirebaseAuth.instance;
   createNewUser(String name , String email, String photoUrl, String uid) async{
     final User? current_user = _auth.currentUser;
-    await FirebaseFirestore.instance.collection("users").doc(current_user!.uid).set(
-      {
-        "name" : name,
-        "email" : email,
-        "photoUrl" : photoUrl,
-        "money" : "5000"
+    if(await getUser()){
+      print("User Already Exists");
+    }
+    else{
+      await FirebaseFirestore.instance.collection("users").doc(current_user!.uid).set(
+          {
+            "name" : name,
+            "email" : email,
+            "photoUrl" : photoUrl,
+            "money" : "6000"
 
-      }
-    ).then((value) {
-      print("User Registered Successfully");
-    });
+          }
+      ).then((value) {
+        print("User Registered Successfully");
+      });
+    }
+
   }
+
+  Future<bool> getUser() async{
+    final User? current_user = _auth.currentUser ;
+    String user = "" ;
+
+    await FirebaseFirestore.instance.collection("users").doc(current_user!.uid).get().then((value){
+      user = value.data().toString();
+ });
+    if(user.toString() == "null"){
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
+
 }
+
