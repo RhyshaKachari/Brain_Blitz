@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:hexcolor/hexcolor.dart';
 import 'package:brainblitz/services/InternetCon.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
+import 'package:overlay_support/overlay_support.dart';
 
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
@@ -17,7 +19,10 @@ class _LoginState extends State<Login> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    Internet().checkInternetCon() ;
+   InternetConnectionChecker().onStatusChange.listen((status) {
+     final connected = status == InternetConnectionStatus.connected;
+     showSimpleNotification(Text(connected ? "CONNECTED TO INTERNET" : "NO INTERNET"));
+   });
   }
 
   @override
