@@ -2,6 +2,8 @@ import 'package:brainblitz/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_signin_button/flutter_signin_button.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:brainblitz/services/InternetCon.dart';
+
 class Login extends StatefulWidget {
   const Login({Key? key}) : super(key: key);
 
@@ -10,6 +12,14 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    Internet().checkInternetCon() ;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

@@ -43,6 +43,8 @@ dependencies:
   flutter_signin_button: any
   hexcolor:
   cloud_firestore: any
+  internet_connection_checker: ^1.0.0+1
+  overlay_support: ^2.1.0
 
 dev_dependencies:
   flutter_test:
