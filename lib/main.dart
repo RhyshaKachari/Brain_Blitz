@@ -1,7 +1,9 @@
+import 'package:brainblitz/views/home.dart';
 import 'package:brainblitz/views/login.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:overlay_support/overlay_support.dart';
+import 'package:hexcolor/hexcolor.dart';
 
 Future <void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -23,9 +25,9 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         theme: ThemeData(
 
-          primarySwatch: Colors.purple,
+          primarySwatch: Colors.indigo,
         ),
-        home: Login(),
+        home: Home(),
       ),
     );
   }

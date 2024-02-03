@@ -8,7 +8,16 @@ bool connected = false;
 checkInternetCon() async {
   connected = await InternetConnectionChecker().hasConnection ;
   final msg = connected ? "Connected to Internet" : "Not Connected to Internet" ;
-  showSimpleNotification(Text('$msg')) ;
-}
+  showSimpleNotification(
+    Container(
+      decoration: BoxDecoration(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(8.0),
 
+      ),
+      child : Text('$msg') ,) ,
+
+
+  ) ;
+}
 }
